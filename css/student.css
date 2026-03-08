@@ -1,0 +1,874 @@
+
+:root {
+  --cream:        #fdf9f2;
+  --ink:            #1f5c46;
+  --ink-soft:     #1f5c46;
+  --ink-muted:    #9c9690;
+  --gold:          #d09632;
+  --gold-light:   #e8d49b;
+  --gold-pale:    #fdf6e3;
+  --teal:          #1f5c46;
+  --teal-light:   #e8f4f4;
+  --rose:         #b85450;
+  --rose-light:   #fbeaea;
+  --sage:         #1f5c46;
+  --sage-light:   #eaf3ec;
+  --sand:         #d4c5a9;
+  --border:       #e8e2d6;
+  --shadow-sm:    0 2px 8px rgba(26,23,20,.07);
+  --shadow-md:    0 6px 24px rgba(26,23,20,.10);
+  --shadow-lg:    0 16px 48px rgba(26,23,20,.13);
+  --radius:       14px;
+  --radius-sm:    8px;
+  --font-display: 'Amiri', 'Cairo', serif;
+  --font-body:    'Cairo', sans-serif;
+  --transition:   0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ──────────────────────────────────────────────────────────────
+   2. القاعدة — Base (RTL)
+   ────────────────────────────────────────────────────────────── */
+#student-dashboard {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--cream);
+  padding: 3rem 0 5rem;
+  min-height: 100vh;
+  direction: rtl;
+  text-align: right;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   3. عناوين الأقسام — Section Headers
+   ────────────────────────────────────────────────────────────── */
+.sd-section-header {
+  margin-bottom: 2rem;
+}
+
+.sd-section-header .sd-eyebrow {
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-bottom: .35rem;
+}
+
+/* الخط الذهبي يظهر بعد النص في اتجاه RTL */
+.sd-section-header .sd-eyebrow::after {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 2px;
+}
+
+.sd-section-header h2 {
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: .4rem;
+  line-height: 1.4;
+}
+
+.sd-section-header p {
+  font-size: .95rem;
+  color: var(--ink-muted);
+  font-weight: 300;
+  margin: 0;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   4. بانر الترحيب — Greeting Banner
+   ────────────────────────────────────────────────────────────── */
+.sd-greeting {
+  background: linear-gradient(135deg, var(--ink) 0%, #2e2820 60%, #3d3020 100%);
+  border-radius: var(--radius);
+  padding: 2.25rem 2.5rem;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+  box-shadow: var(--shadow-lg);
+}
+
+/* التوهج الذهبي — يسار في RTL */
+.sd-greeting::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  left: -60px;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(201,168,76,.18) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+/* التوهج الفيروزي */
+.sd-greeting::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  right: 40%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(42,107,110,.22) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.sd-greeting-content {
+  position: relative;
+  z-index: 1;
+}
+
+.sd-greeting .sd-tag {
+  display: inline-block;
+  background: rgba(201,168,76,.2);
+  border: 1px solid rgba(201,168,76,.4);
+  color: var(--gold-light);
+  font-size: .78rem;
+  font-weight: 600;
+  padding: .28rem .85rem;
+  border-radius: 999px;
+  margin-bottom: .85rem;
+}
+
+.sd-greeting h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  font-weight: 800;
+  margin-bottom: .4rem;
+  line-height: 1.4;
+}
+
+.sd-greeting h1 span {
+  color: var(--gold-light);
+}
+
+.sd-greeting > .sd-greeting-content > p {
+  color: rgba(255,255,255,.62);
+  font-size: .95rem;
+  font-weight: 300;
+  margin: 0;
+}
+
+.sd-greeting-stats {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1.75rem;
+  flex-wrap: wrap;
+}
+
+.sd-greeting-stat {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: var(--radius-sm);
+  padding: .75rem 1.25rem;
+  min-width: 130px;
+}
+
+.sd-greeting-stat .label {
+  font-size: .72rem;
+  font-weight: 500;
+  color: rgba(255,255,255,.45);
+  margin-bottom: .2rem;
+}
+
+.sd-greeting-stat .value {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+
+.sd-greeting-stat .value small {
+  font-family: var(--font-body);
+  font-size: .75rem;
+  font-weight: 400;
+  color: var(--gold-light);
+  margin-right: .25rem;
+}
+
+/* أيقونة الكتاب الكبيرة — يسار الشاشة في RTL */
+.sd-greeting-icon {
+  position: absolute;
+  left: 2.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 8rem;
+  color: rgba(201,168,76,.07);
+  z-index: 0;
+  line-height: 1;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   5. البطاقات — Card Base
+   ────────────────────────────────────────────────────────────── */
+.sd-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition), transform var(--transition);
+  overflow: hidden;
+}
+
+.sd-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.sd-card-header {
+  padding: 1.5rem 1.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: .85rem;
+}
+
+.sd-card-header .sd-card-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+
+.sd-card-header .sd-card-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.sd-card-header .sd-card-subtitle {
+  font-size: .8rem;
+  color: var(--ink-muted);
+  margin: 0;
+  font-weight: 300;
+}
+
+.sd-card-body {
+  padding: 1.75rem;
+}
+
+/* ألوان أيقونات رأس البطاقة */
+.icon-gold { background: var(--gold-pale);  color: var(--gold); }
+.icon-teal { background: var(--teal-light); color: var(--teal); }
+.icon-rose { background: var(--rose-light); color: var(--rose); }
+.icon-sage { background: var(--sage-light); color: var(--sage); }
+
+/* ──────────────────────────────────────────────────────────────
+   6. عناصر النموذج — Form Controls (RTL)
+   ────────────────────────────────────────────────────────────── */
+.sd-form-group {
+  margin-bottom: 1.1rem;
+}
+
+.sd-form-group label {
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  margin-bottom: .45rem;
+  display: block;
+}
+
+.sd-input,
+.sd-select {
+  width: 100%;
+  padding: .72rem 1rem;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: .92rem;
+  color: var(--ink);
+  background: var(--cream);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+  appearance: none;
+  text-align: right;
+  direction: rtl;
+}
+
+.sd-input:focus,
+.sd-select:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201,168,76,.15);
+  background: #fff;
+}
+
+.sd-input.is-invalid {
+  border-color: var(--rose);
+}
+
+.sd-input.is-invalid:focus {
+  box-shadow: 0 0 0 3px rgba(184,84,80,.15);
+}
+
+/* سهم القائمة المنسدلة — يسار في RTL */
+.sd-select-wrapper {
+  position: relative;
+}
+
+.sd-select-wrapper::after {
+  content: '\f282';
+  font-family: 'bootstrap-icons';
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ink-muted);
+  pointer-events: none;
+  font-size: .85rem;
+}
+
+.sd-select {
+  padding-left: 2.2rem;
+}
+
+/* الأزرار */
+.sd-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .75rem 1.6rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: .92rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all var(--transition);
+}
+
+.sd-btn-primary {
+  background: var(--ink);
+  color: #fff;
+}
+
+.sd-btn-primary:hover {
+  background: #2e2820;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(26,23,20,.25);
+}
+
+.sd-btn-primary:active {
+  transform: translateY(0);
+}
+
+/* رسائل خطأ التحقق */
+.sd-invalid-msg {
+  font-size: .8rem;
+  color: var(--rose);
+  margin-top: .35rem;
+  display: none;
+}
+
+.sd-invalid-msg.visible {
+  display: block;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   7. بطاقة نتيجة الدرجة — Grade Result Card
+   ────────────────────────────────────────────────────────────── */
+#grade-result-wrapper {
+  margin-top: 1.5rem;
+}
+
+.grade-result-card {
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  overflow: hidden;
+  animation: fadeSlideUp .35s ease forwards;
+}
+
+.grade-result-header {
+  background: linear-gradient(135deg, var(--ink), #2e2820);
+  color: #fff;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.grade-result-header .student-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.grade-badge {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.grade-result-body {
+  background: #fff;
+  padding: 1.25rem 1.5rem;
+}
+
+.grade-meta-item {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  font-size: .87rem;
+  color: var(--ink-soft);
+  margin-bottom: .5rem;
+}
+
+.grade-meta-item i {
+  color: var(--gold);
+  font-size: 1rem;
+}
+
+.grade-score-bar {
+  margin-top: 1rem;
+  height: 8px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.grade-score-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--teal), var(--gold));
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* حالة الانتظار قبل البحث */
+#grade-result-placeholder {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  color: var(--ink-muted);
+}
+
+#grade-result-placeholder i {
+  font-size: 2.5rem;
+  color: var(--sand);
+  display: block;
+  margin-bottom: .75rem;
+}
+
+#grade-result-placeholder p {
+  font-size: .9rem;
+  margin: 0;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   8. الحضور والغياب — Attendance Section
+   ────────────────────────────────────────────────────────────── */
+.attendance-stat-card {
+  border-radius: var(--radius-sm);
+  padding: 1.25rem 1.35rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid var(--border);
+  background: #fff;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.attendance-stat-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.attendance-stat-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.attendance-stat-value {
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: .2rem;
+}
+
+.attendance-stat-label {
+  font-size: .78rem;
+  color: var(--ink-muted);
+  font-weight: 500;
+}
+
+.attendance-progress-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: .5rem;
+  font-size: .84rem;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+
+/* أشرطة التقدم العامة */
+.sd-progress {
+  height: 10px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: .9rem;
+}
+
+.sd-progress-bar {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ألوان أشرطة التقدم */
+.bar-sage { background: linear-gradient(90deg, var(--sage), #6dbf82); }
+.bar-rose { background: linear-gradient(90deg, var(--rose), #e07a76); }
+.bar-gold { background: linear-gradient(90deg, #b8860b, var(--gold)); }
+.bar-teal { background: linear-gradient(90deg, var(--teal), #3a9ea3); }
+
+/* ──────────────────────────────────────────────────────────────
+   9. المسابقات والإعلانات — Competitions Section
+   ────────────────────────────────────────────────────────────── */
+.competition-item {
+  display: flex;
+  gap: 1.1rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--border);
+  transition: all var(--transition);
+}
+
+.competition-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.competition-item:first-child {
+  padding-top: 0;
+}
+
+.competition-date-badge {
+  flex-shrink: 0;
+  width: 52px;
+  text-align: center;
+}
+
+.competition-date-badge .day {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.competition-date-badge .month {
+  font-size: .68rem;
+  font-weight: 600;
+  color: var(--ink-muted);
+  display: block;
+  margin-top: .1rem;
+}
+
+.competition-divider {
+  width: 1px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+.competition-content {
+  flex: 1;
+}
+
+.competition-content h6 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color:  #d09632;
+  margin-bottom: .3rem;
+  line-height: 1.5;
+}
+
+.competition-content p {
+  font-size: .85rem;
+  color:   #1f5c46;
+  font-weight: 300;
+  margin-bottom: .5rem;
+  line-height: 1.7;
+}
+
+.competition-tag {
+  display: inline-block;
+  padding: .22rem .75rem;
+  border-radius: 999px;
+  font-size: .72rem;
+  font-weight: 600;
+}
+
+/* ألوان تصنيف الإعلانات */
+.tag-gold { background: var(--gold-pale);  color: #8a6d00; }
+.tag-teal { background: var(--teal-light); color: var(--teal); }
+.tag-rose { background: var(--rose-light); color: var(--rose); }
+.tag-sage { background: var(--sage-light); color: var(--sage); }
+
+/* ──────────────────────────────────────────────────────────────
+   10. متابعة حفظ القرآن — Quran Memorization Tracker
+   ────────────────────────────────────────────────────────────── */
+.quran-hero {
+  background: linear-gradient(135deg, #0d3d30 0%, #1a5c45 60%, #0d3d30 100%);
+  border-radius: var(--radius-sm);
+  padding: 1.75rem;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+}
+
+/* البسملة كزخرفة خلفية */
+.quran-hero::before {
+  content: '﷽';
+  position: absolute;
+  left: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3.5rem;
+  color: rgba(255,255,255,.08);
+  font-family: 'Amiri', serif;
+}
+
+.quran-hero .surah-label {
+  font-size: .72rem;
+  font-weight: 600;
+  color: rgba(255,255,255,.5);
+  margin-bottom: .3rem;
+  letter-spacing: .04em;
+}
+
+.quran-hero .surah-name {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: .2rem;
+  line-height: 1.4;
+}
+
+.quran-hero .surah-arabic {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,.65);
+  font-family: 'Amiri', serif;
+}
+
+/* صف الحبوب التفصيلية */
+.quran-detail-row {
+  display: flex;
+  gap: .75rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.quran-detail-pill {
+  flex: 1;
+  min-width: 100px;
+  background: var(--sage-light);
+  border: 1px solid #c2dfc9;
+  border-radius: var(--radius-sm);
+  padding: .85rem 1rem;
+  text-align: center;
+}
+
+.quran-detail-pill .pill-icon {
+  font-size: 1.3rem;
+  color: var(--sage);
+  display: block;
+  margin-bottom: .3rem;
+}
+
+.quran-detail-pill .pill-value {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ink);
+  display: block;
+  line-height: 1;
+  margin-bottom: .15rem;
+}
+
+.quran-detail-pill .pill-label {
+  font-size: .72rem;
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+
+.quran-overall-progress {
+  margin-top: .5rem;
+}
+
+.quran-overall-progress .overall-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: .84rem;
+  color: var(--ink-soft);
+  font-weight: 500;
+  margin-bottom: .5rem;
+}
+
+/* حالة المراجعة */
+.quran-review-status {
+  margin-top: 1.25rem;
+  padding: .85rem 1.1rem;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  font-size: .87rem;
+}
+
+.status-pending { background: #fff8e6; border: 1px solid #f0d98c; }
+.status-done    { background: var(--sage-light); border: 1px solid #c2dfc9; }
+.status-overdue { background: var(--rose-light); border: 1px solid #eac5c4; }
+
+.quran-review-status i { font-size: 1.2rem; }
+.status-pending i { color: #b8860b; }
+.status-done i    { color: var(--sage); }
+.status-overdue i { color: var(--rose); }
+
+/* حدود سجل المراجعة — يمين في RTL */
+.rtl-border-right {
+  border-right: 2px solid var(--border);
+  padding-right: .85rem;
+  border-left: none;
+  padding-left: 0;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   11. حالات التحميل والفراغ — Empty & Loading States
+   ────────────────────────────────────────────────────────────── */
+.sd-empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--ink-muted);
+}
+
+.sd-empty-state i {
+  font-size: 2.5rem;
+  color: var(--sand);
+  display: block;
+  margin-bottom: .75rem;
+}
+
+.sd-empty-state p {
+  font-size: .9rem;
+  margin: 0;
+}
+
+.sd-loading {
+  text-align: center;
+  padding: 2rem;
+  color: var(--ink-muted);
+  font-size: .9rem;
+}
+
+.sd-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+  margin-left: .5rem;
+  vertical-align: middle;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   12. الحركات والانيميشن — Animations
+   ────────────────────────────────────────────────────────────── */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.sd-animate {
+  animation: fadeSlideUp .4s ease forwards;
+  opacity: 0;
+}
+
+.sd-animate-delay-1 { animation-delay: .08s; }
+.sd-animate-delay-2 { animation-delay: .16s; }
+.sd-animate-delay-3 { animation-delay: .24s; }
+.sd-animate-delay-4 { animation-delay: .32s; }
+
+/* ──────────────────────────────────────────────────────────────
+   13. إصلاحات Bootstrap RTL
+   ────────────────────────────────────────────────────────────── */
+.sd-card-header .ms-auto {
+  margin-right: auto !important;
+  margin-left: 0 !important;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   14. استجابة الجوال — Responsive (Mobile First)
+   ────────────────────────────────────────────────────────────── */
+.section-gap {
+  margin-bottom: 3.5rem;
+}
+
+@media (max-width: 767.98px) {
+  #student-dashboard {
+    padding: 1.5rem 0 4rem;
+  }
+
+  .sd-greeting {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .sd-greeting-icon {
+    display: none;
+  }
+
+  .sd-greeting h1 {
+    font-size: 1.5rem;
+  }
+
+  .sd-greeting-stats {
+    gap: .75rem;
+  }
+
+  .sd-greeting-stat {
+    min-width: 100px;
+  }
+
+  .sd-card-body {
+    padding: 1.25rem;
+  }
+
+  .sd-card-header {
+    padding: 1.1rem 1.25rem .75rem;
+  }
+
+  .sd-section-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .quran-detail-pill {
+    min-width: calc(50% - .375rem);
+  }
+}
