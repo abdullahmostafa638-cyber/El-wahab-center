@@ -13,7 +13,9 @@ body {
    overflow-x: hidden;
    background: #fdf9f2;
 }
-
+html, body {
+  overflow-x: hidden;
+}
 
 /* global  */
 
@@ -971,8 +973,8 @@ text-decoration: none;
   /* ── Navbar ──
      Keep items in ONE horizontal row; shrink to fit */
   .navbar {
-    width: 85%;
-    padding: 8px 12px;
+    width: 75%;
+    padding: 8px 10px;
     border-radius: 50px;
     top: 10px;
   }
