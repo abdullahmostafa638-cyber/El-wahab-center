@@ -411,7 +411,8 @@ font-size:16px;
   position: relative;
   overflow: hidden;
   cursor: default;
-  width: 400px;
+  /* width: 100%; */
+  width:350px;
 }
 .service-card::before {
   content: '';
